@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:outline_gradient_button/outline_gradient_button.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -13,7 +14,6 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'TODO PRO',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
       ),
       home: const ScreenHome(),
     );
@@ -33,19 +33,13 @@ class ScreenHome extends StatelessWidget {
           SizedBox(
             height: 70,
             width: 70,
-            child: ElevatedButton(
-              onPressed: () {},
-              style: ButtonStyle(
-                overlayColor: MaterialStateProperty.all(
-                    const Color.fromARGB(255, 153, 255, 29)),
-                surfaceTintColor: MaterialStateProperty.all(
-                    const Color.fromARGB(255, 230, 255, 189)),
-                iconSize: MaterialStateProperty.all(35),
-                shape: MaterialStateProperty.all(const CircleBorder(
-                  side: BorderSide.none,
-                )),
-              ),
-              child: const Icon(Icons.add),
+            child: OutlineGradientButton(
+              gradient: LinearGradient(colors: [Colors.black, Colors.orange]),
+              strokeWidth: 4,
+              radius: Radius.circular(35),
+              backgroundColor: Colors.white,
+              child: Icon(Icons.add),
+
             ),
           ),
         ],
