@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 void main() {
   runApp(const MyApp());
@@ -53,7 +54,7 @@ class ScreenHome extends StatelessWidget {
               child: CircleAvatar(
                 backgroundColor: const Color.fromRGBO(255, 68, 0, 0.822),
                 child: IconButton(
-                  icon: const Icon(Icons.add),
+                  icon: const FaIcon(FontAwesomeIcons.plus),
                   onPressed: () {},
                   style: const ButtonStyle(
                       backgroundColor: MaterialStatePropertyAll(
@@ -71,32 +72,42 @@ class ScreenHome extends StatelessWidget {
         shadowColor: Colors.red,
         surfaceTintColor: Colors.pink,
         child: Container(
-          height: double.infinity,
-          width: double.infinity,
-          decoration: const BoxDecoration(
-            gradient: RadialGradient(
-              center: Alignment.center,
-              colors: [
-                Color.fromARGB(255, 248, 144, 54),
-                Color.fromARGB(255, 255, 242, 125),
-              ],
-              focalRadius: 100,
+            height: double.infinity,
+            width: double.infinity,
+            decoration: const BoxDecoration(
+              gradient: RadialGradient(
+                center: Alignment.center,
+                colors: [
+                  Color.fromARGB(255, 248, 144, 54),
+                  Color.fromARGB(255, 255, 242, 125),
+                ],
+                focalRadius: 100,
+              ),
             ),
-          ),
-          child: ListView(
-            padding: EdgeInsets.zero,
-            children: const [
-              DrawerHeader(
-                child: Text("TESTING"),
-              )
-            ],
-          ),
-        ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Flexible(
+                  flex: 2,
+                  child: Container(
+                    color: Colors.red,
+                  ),
+                ),
+                Flexible(
+                    flex: 3,
+                    child: Container(
+                      color: Colors.orange,
+                    ))
+              ],
+            )),
       ),
       appBar: AppBar(
-        title: const Text(
-          "TODO PRO",
-          style: TextStyle(),
+        title: const Padding(
+          padding: EdgeInsets.only(right: 2,left: 75),
+          child: Text(
+            "TODO PRO",
+            style: TextStyle(),
+          ),
         ),
         leading: Builder(
           builder: (BuildContext context) {
@@ -104,9 +115,10 @@ class ScreenHome extends StatelessWidget {
                 onPressed: () {
                   Scaffold.of(context).openDrawer();
                 },
-                icon: const Icon(Icons.remove_red_eye));
+                icon: const FaIcon(FontAwesomeIcons.burger));
           },
         ),
+        backgroundColor: const Color.fromARGB(0, 20, 136, 59),
       ),
     );
   }
