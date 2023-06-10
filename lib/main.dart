@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 void main() {
   runApp(const MyApp());
@@ -38,7 +39,6 @@ class ScreenHome extends StatelessWidget {
       bottomNavigationBar: Container(
         decoration: const BoxDecoration(
           gradient: RadialGradient(
-            center: Alignment.topCenter,
             colors: [
               Color.fromARGB(255, 48, 181, 130),
               Color.fromARGB(255, 104, 207, 255)
@@ -51,16 +51,33 @@ class ScreenHome extends StatelessWidget {
             SizedBox(
               height: 70,
               width: 70,
-              child: CircleAvatar(
-                backgroundColor: const Color.fromRGBO(255, 68, 0, 0.822),
-                child: IconButton(
-                  icon: const FaIcon(FontAwesomeIcons.plus),
-                  onPressed: () {},
-                  style: const ButtonStyle(
-                      backgroundColor: MaterialStatePropertyAll(
-                          Color.fromARGB(255, 0, 0, 0)),
-                      elevation: MaterialStatePropertyAll(10),
-                      iconSize: MaterialStatePropertyAll(75)),
+              child: Container(
+                decoration: const BoxDecoration(
+                  boxShadow: [
+                    BoxShadow(
+                        color: Color.fromARGB(188, 141, 141, 255),
+                        blurRadius: 5),
+                  ],
+                  shape: BoxShape.circle,
+                ),
+                child: InkWell(
+                  splashColor: Colors.blueGrey,
+                  child: IconButton(
+                    icon: const FaIcon(
+                      FontAwesomeIcons.plus,
+                      size: 30,
+                    ),
+                    onPressed: () {},
+                    splashColor: Colors.blue,
+                    style: const ButtonStyle(
+                        backgroundColor: MaterialStatePropertyAll(
+                            Color.fromARGB(255, 0, 0, 0)),
+                        elevation: MaterialStatePropertyAll(10),
+                        iconSize: MaterialStatePropertyAll(75),
+                        shape: MaterialStatePropertyAll(RoundedRectangleBorder(
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(10))))),
+                  ),
                 ),
               ),
             ),
@@ -102,11 +119,14 @@ class ScreenHome extends StatelessWidget {
             )),
       ),
       appBar: AppBar(
-        title: const Padding(
-          padding: EdgeInsets.only(right: 2,left: 75),
+        title: Padding(
+          padding: const EdgeInsets.only(right: 2, left: 75),
           child: Text(
             "TODO PRO",
-            style: TextStyle(),
+            style: GoogleFonts.workSans(
+              textStyle: const TextStyle(
+                  color: Colors.deepPurpleAccent, fontWeight: FontWeight.w700),
+            ),
           ),
         ),
         leading: Builder(
