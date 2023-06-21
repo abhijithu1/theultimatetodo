@@ -67,16 +67,42 @@ class ScreenHome extends StatelessWidget {
                       FontAwesomeIcons.plus,
                       size: 30,
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      showDialog(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return const AlertDialog(
+                            title: Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                FaIcon(FontAwesomeIcons.pen),
+                                SizedBox(
+                                  width: 11,
+                                ),
+                                Text("Enter some text"),
+                              ],
+                            ),
+                            
+                            elevation: 1,
+                          );
+                        },
+                      );
+                    },
                     splashColor: Colors.blue,
                     style: const ButtonStyle(
-                        backgroundColor: MaterialStatePropertyAll(
-                            Color.fromARGB(255, 0, 0, 0)),
-                        elevation: MaterialStatePropertyAll(10),
-                        iconSize: MaterialStatePropertyAll(75),
-                        shape: MaterialStatePropertyAll(RoundedRectangleBorder(
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(10))))),
+                      backgroundColor: MaterialStatePropertyAll(
+                        Color.fromARGB(255, 0, 0, 0),
+                      ),
+                      elevation: MaterialStatePropertyAll(10),
+                      iconSize: MaterialStatePropertyAll(75),
+                      shape: MaterialStatePropertyAll(
+                        RoundedRectangleBorder(
+                          borderRadius: BorderRadius.all(
+                            Radius.circular(10),
+                          ),
+                        ),
+                      ),
+                    ),
                   ),
                 ),
               ),
