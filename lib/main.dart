@@ -128,46 +128,40 @@ class ScreenHome extends StatelessWidget {
       drawer: Drawer(
         elevation: 10,
         shadowColor: Colors.red,
-        surfaceTintColor: Colors.pink,
-        child: Container(
-            height: double.infinity,
-            width: double.infinity,
-            decoration: const BoxDecoration(
-              gradient: RadialGradient(
-                center: Alignment.center,
-                colors: [
-                  Color.fromARGB(255, 248, 144, 54),
-                  Color.fromARGB(255, 255, 242, 125),
-                ],
-                focalRadius: 100,
+        surfaceTintColor: const Color.fromRGBO(233, 30, 99, 1),
+        child: ListView(
+          children: <Widget>[
+            DrawerHeader(
+              decoration: const BoxDecoration(),
+              child: SizedBox(
+                width: double.infinity,
+                height: double.infinity,
+                child: Image.asset("Assets/mount.jpg"),
               ),
             ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Flexible(
-                  flex: 2,
-                  child: Container(
-                    color: Colors.red,
-                    child: const RotatedBox(quarterTurns: 45,child: Text("Good evening"),),
-                  ),
-                ),
-                Flexible(
-                    flex: 3,
-                    child: Container(
-                      color: Colors.orange,
-                    ))
-              ],
-            )),
+            const SizedBox(
+              height: 150,
+            ),
+            const ListTile(
+              leading: FaIcon(FontAwesomeIcons.house),
+              trailing: Text("Home"),
+              title: Text("dummy "),
+              enabled: true,
+            ),
+            const ListTile(
+              enabled: true,
+            ),
+          ],
+        ),
       ),
       appBar: AppBar(
         title: Padding(
-          padding: const EdgeInsets.only(right: 2, left: 75),
+          padding: const EdgeInsets.only(right: 1, left: 45),
           child: Text(
             "TODO PRO",
-            style: GoogleFonts.workSans(
+            style: GoogleFonts.grandstander(
               textStyle: const TextStyle(
-                  color: Colors.deepPurpleAccent, fontWeight: FontWeight.w700),
+                  color: Colors.deepPurpleAccent, fontWeight: FontWeight.w700,fontSize: 35),
             ),
           ),
         ),
