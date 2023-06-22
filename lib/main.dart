@@ -15,13 +15,15 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'TODO PRO',
       theme: ThemeData(),
-      home: const ScreenHome(),
+      home: ScreenHome(),
     );
   }
 }
 
 class ScreenHome extends StatelessWidget {
-  const ScreenHome({super.key});
+  ScreenHome({super.key});
+
+  final _formkey1 = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -61,18 +63,20 @@ class ScreenHome extends StatelessWidget {
                   shape: BoxShape.circle,
                 ),
                 child: InkWell(
-                  splashColor: Colors.blueGrey,
-                  child: IconButton(
-                    icon: const FaIcon(
-                      FontAwesomeIcons.plus,
-                      size: 30,
+                  splashColor: const Color.fromARGB(255, 0, 170, 255),
+                  child: FloatingActionButton(
+                    tooltip: "Add notes",
+                    backgroundColor: const Color.fromARGB(207, 0, 51, 121),
+                    elevation: 10,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(50),
                     ),
                     onPressed: () {
                       showDialog(
                         context: context,
                         builder: (BuildContext context) {
-                          return const AlertDialog(
-                            title: Row(
+                          return AlertDialog(
+                            title: const Row(
                               mainAxisAlignment: MainAxisAlignment.start,
                               children: [
                                 FaIcon(FontAwesomeIcons.pen),
@@ -82,26 +86,37 @@ class ScreenHome extends StatelessWidget {
                                 Text("Enter some text"),
                               ],
                             ),
-                            
+                            content: SingleChildScrollView(
+                              scrollDirection: Axis.vertical,
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Form(
+                                    key: _formkey1,
+                                    child: TextField(
+                                      decoration: InputDecoration(
+                                          hintText: "Enter something ",
+                                          hintStyle: GoogleFonts.adamina(
+                                              textStyle: const TextStyle(
+                                                  color: Colors.black))),
+                                    ),
+                                  ),
+                                  IconButton(
+                                    onPressed: () {},
+                                    icon: const FaIcon(FontAwesomeIcons.check),
+                                  )
+                                ],
+                              ),
+                            ),
                             elevation: 1,
                           );
                         },
                       );
                     },
-                    splashColor: Colors.blue,
-                    style: const ButtonStyle(
-                      backgroundColor: MaterialStatePropertyAll(
-                        Color.fromARGB(255, 0, 0, 0),
-                      ),
-                      elevation: MaterialStatePropertyAll(10),
-                      iconSize: MaterialStatePropertyAll(75),
-                      shape: MaterialStatePropertyAll(
-                        RoundedRectangleBorder(
-                          borderRadius: BorderRadius.all(
-                            Radius.circular(10),
-                          ),
-                        ),
-                      ),
+                    splashColor: const Color.fromARGB(255, 15, 18, 20),
+                    child: const FaIcon(
+                      FontAwesomeIcons.plus,
+                      size: 30,
                     ),
                   ),
                 ),
@@ -134,6 +149,7 @@ class ScreenHome extends StatelessWidget {
                   flex: 2,
                   child: Container(
                     color: Colors.red,
+                    child: const RotatedBox(quarterTurns: 45,child: Text("Good evening"),),
                   ),
                 ),
                 Flexible(
