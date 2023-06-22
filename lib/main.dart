@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:hive/hive.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
 void main() {
+  Hive.init('Databox');
   runApp(const MyApp());
 }
 
@@ -33,10 +36,15 @@ class ScreenHome extends StatelessWidget {
         height: double.infinity,
         width: double.infinity,
         decoration: const BoxDecoration(
-            gradient: RadialGradient(center: Alignment.topCenter, colors: [
-          Color.fromARGB(255, 246, 255, 0),
-          Color.fromARGB(255, 104, 207, 255)
-        ])),
+          gradient: RadialGradient(
+            center: Alignment.topCenter,
+            colors: [
+              Color.fromARGB(255, 246, 255, 0),
+              Color.fromARGB(255, 104, 207, 255)
+            ],
+          ),
+        ),
+        child: ListView(),
       ),
       bottomNavigationBar: Container(
         decoration: const BoxDecoration(
@@ -161,7 +169,9 @@ class ScreenHome extends StatelessWidget {
             "TODO PRO",
             style: GoogleFonts.grandstander(
               textStyle: const TextStyle(
-                  color: Colors.deepPurpleAccent, fontWeight: FontWeight.w700,fontSize: 35),
+                  color: Colors.deepPurpleAccent,
+                  fontWeight: FontWeight.w700,
+                  fontSize: 35),
             ),
           ),
         ),
