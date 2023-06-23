@@ -3,10 +3,12 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-
-void main() {
-  Hive.init('Databox');
+import 'package:path_provider/path_provider.dart' as path_provider;
+void main() async {
+  final appDocumentDirectory = await path_provider.getApplicationSupportDirectory();
+  Hive.init(appDocumentDirectory.path);
   runApp(const MyApp());
+
 }
 
 class MyApp extends StatelessWidget {
